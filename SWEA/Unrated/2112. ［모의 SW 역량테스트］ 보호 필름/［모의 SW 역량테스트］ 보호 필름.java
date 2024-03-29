@@ -1,21 +1,7 @@
-import java.awt.Point;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Scanner;
-import java.util.Set;
 import java.util.StringTokenizer;
-import java.util.TreeSet;
 
 
 public class Solution {
@@ -56,34 +42,32 @@ public class Solution {
 	}
 	
 	static void go(int idx, int f,int start) {
+		// f 만큼 투여 하면 뽑기
 		if(idx == f) {
 			if(isGood()) min = f;
 			return ;
 		}
 		else {
 			// 복구용
-			int temp[][] = new int [D][W];
-			for(int i = 0 ; i< D; i++) {
-				for(int j = 0 ; j< W; j++) {
-					temp[i][j] = film[i][j];
-				}
-			}
+			int temp[][] = new int [1][W];
 			// 조합
 			for(int i = start; i < D; i++) {
+				for(int j = 0 ; j< W; j++) {
+				 temp[0][j] = film[i][j];
+				}
 				change(i,0);
 				go(idx+1,f,i+1);
 				change(i,1);
 				go(idx+1,f,i+1);
-				for(int j = 0 ; j< D; j++) {
-					for(int k = 0 ; k< W; k++) {
-						film[j][k] = temp[j][k] ;
-					}
+				for(int k = 0 ; k< W; k++) {
+					film[i][k] = temp[0][k] ;
 				}
 				
 			}
 		}
 	}
 	
+	// film 액체 투여
 	static void change(int d, int type) {
 		for(int i = 0; i < W; i++) {
 			film[d][i] = type;
