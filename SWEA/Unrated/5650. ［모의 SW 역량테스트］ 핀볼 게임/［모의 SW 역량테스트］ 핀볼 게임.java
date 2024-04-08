@@ -10,14 +10,12 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class Solution {
-	static int N, M, K;
-	static StringTokenizer st;
+	static int N;
 	static int pin_map[][];
 	
 	static List<Point> wam[];
 	static List<Point> ball;
 	static int max = 0;
-	
 	
 	// 벽의 dir 상 우 하 좌
 	static int box[][] = { { 1, 1, 0, 0 }, { 0, 1, 1, 0 }, { 0, 0, 1, 1 }, { 1, 0, 0, 1 }, { 1, 1, 1, 1 } };
@@ -54,11 +52,6 @@ public class Solution {
 				}
 			}
 
-//			// 방향 별 공의 위치를 뽑자
-//			for(int i = 0; i < 4; i++) {
-//				chooseBall(i);
-//			}
-			
 			for(int j = 0 ; j< ball.size(); j++) {
 				for(int i = 0 ; i< 4; i++) {
 					go(i,ball.get(j));
@@ -74,7 +67,6 @@ public class Solution {
 		int x = finish.x;
 		int y = finish.y;
 		while(true) {
-			
 			
 			// fin볼 바로 이동
 			x += dx[dir];
@@ -131,10 +123,7 @@ public class Solution {
 				max = Math.max(max, sum);
 				break;
 			}
-
 		}
-		
-		
 	}
 	
 	static int changeDir(int i, int d) {
@@ -150,79 +139,5 @@ public class Solution {
 		}
 		return 0;
 	}
-	
-//	static void chooseBall(int dir) {
-//		int x = 0;
-//		int y = 0;
-//		boolean isGood = false;
-//		for(int i = 0; i< N; i++) {
-//			
-//			x = 0;
-//			isGood = true;
-//			// 상
-//			if(dir == 0) {
-//				while(x < N) {
-//					if(pin_map[x][i] == 0 && isGood) {
-//						ball[dir].add(new Point(x,i));
-//						isGood = false;
-//					}
-//					// 장애물을 만나면 다시 최고 위치라고 생각
-//					else if(pin_map[x][i] != 0) {
-//						isGood = true;
-//					}
-//					x++;
-//				}
-//				continue;
-//			}
-//			// 우
-//			if(dir == 2) {
-//				while(x < N) {
-//					if(pin_map[i][x] == 0 && isGood) {
-//						ball[dir].add(new Point(x,i));
-//						isGood = false;
-//					}
-//					// 장애물을 만나면 다시 최고 위치라고 생각
-//					else if(pin_map[i][x] != 0) {
-//						isGood = true;
-//					}
-//					x++;
-//				}
-//				continue;
-//			}
-//			
-//			x = N-1;
-//			// 하
-//			if(dir == 1) {
-//				while(x >= 0) {
-//					if(pin_map[x][i] == 0 && isGood) {
-//						ball[dir].add(new Point(x,i));
-//						isGood = false;
-//					}
-//					// 장애물을 만나면 다시 최고 위치라고 생각
-//					else if(pin_map[x][i] != 0) {
-//						isGood = true;
-//					}
-//					x--;
-//				}
-//				continue;
-//			}
-//			// 좌
-//			if(dir == 3) {
-//				while(x >= 0) {
-//					if(pin_map[i][x] == 0 && isGood) {
-//						ball[dir].add(new Point(x,i));
-//						isGood = false;
-//					}
-//					// 장애물을 만나면 다시 최고 위치라고 생각
-//					else if(pin_map[i][x] != 0) {
-//						isGood = true;
-//					}
-//					x--;
-//				}
-//				continue;
-//			}
-//			
-//		}
-//	}
 	
 }
