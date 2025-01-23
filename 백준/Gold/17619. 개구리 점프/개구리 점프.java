@@ -58,7 +58,7 @@ class Main {
         		
         		if (find(logs[i].num) != find(logs[j].num)) {
         			
-                    if (logs[i].x2 < logs[j].x1) continue;
+                    if (logs[i].x2 < logs[j].x1) break;
                     else {
                     	if(logs[i].y != logs[j].y) union(logs[i].num, logs[j].num);
                     }
